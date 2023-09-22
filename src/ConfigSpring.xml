@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
+
+	<bean id="pac" class="com.cga.sanidad.Paciente">
+		<property name="idPaciente" value="1001"></property>
+		<property name="nombre" value="Pepito"></property>
+		<property name="apellidos" value="Pepito"></property>
+		<property name="edad" value="22"></property>
+		<property name="telefono" value="555555"></property>
+		<property name="historial" value="historial"></property>
+		
+
+	</bean>
+
+	<!-- <bean id="dir" class="com.cga.sanidad.Direccion"> <property name="calle" 
+		value="San Antonio"></property> <property name="numero" value="2"></property> 
+		<property name="cp" value="38300"></property> <constructor-arg name="calle" 
+		value="San Antonio"></constructor-arg> <constructor-arg name="numero" value="2"></constructor-arg> 
+		<constructor-arg name="cp" value="38001"></constructor-arg> </bean> -->
+
+	<context:component-scan
+		base-package="com.cga.sanidad"></context:component-scan>
+
+	<bean id="dataSource"
+	
+		class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="com.mysql.cj.jdbc.Driver"></property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/Hospital">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="Douglas-4321"></property>
+	</bean>
+
+</beans>

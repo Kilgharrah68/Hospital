@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="pac" class="com.cga.sanidad.Paciente">
+		<property name="idPaciente" value="1001"></property>
+		<property name="nombre" value="Pepito"></property>
+		<property name="direccion" ref="dir"></property>
+	
+	</bean>
+	
+	<bean id="dir" class="com.cga.sanidad.Direccion">
+		<!--  <property name="calle" value="San Antonio"></property>
+		<property name="numero" value="2"></property>
+		<property name="cp" value="38300"></property>-->
+		<constructor-arg name="calle" value="San Antonio"></constructor-arg>
+		<constructor-arg name="numero" value="2"></constructor-arg>
+		<constructor-arg name="cp" value="38001"></constructor-arg>
+	</bean>
+</beans>
