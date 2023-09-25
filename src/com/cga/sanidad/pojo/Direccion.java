@@ -1,4 +1,4 @@
-package com.cga.sanidad;
+package com.cga.sanidad.pojo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

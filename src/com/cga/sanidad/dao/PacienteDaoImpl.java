@@ -1,4 +1,4 @@
-package com.cga.sanidad;
+package com.cga.sanidad.dao;
 
 import javax.sql.DataSource;
 
@@ -7,12 +7,17 @@ import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
-@Component("PacienteDao")
+import com.cga.sanidad.pojo.Paciente;
+
+@Component("PacienteDao") //Identificador de la Interface
 
 public class PacienteDaoImpl implements PacienteDao {
+
 	
+	// Plantilla para evitar inteccion de sql
 	private NamedParameterJdbcTemplate jdbcTemplate;
 	
+	// Hace referncia el fichero config.xml, dataSource
 	@Autowired 
 	private void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);

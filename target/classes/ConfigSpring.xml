@@ -7,7 +7,7 @@
 
 
 	<bean id="pac" class="com.cga.sanidad.Paciente">
-		<property name="idPaciente" value="1001"></property>
+		<property name="idPaciente" value="1002"></property>
 		<property name="nombre" value="Pepito"></property>
 		<property name="apellidos" value="Pepito"></property>
 		<property name="edad" value="22"></property>
