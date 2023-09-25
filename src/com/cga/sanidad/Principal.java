@@ -56,7 +56,11 @@ public class Principal {
 		System.out.println();
 		
 		System.out.println(pacienteDao.findById(1001));
+
+		System.out.println();
 		
+		System.out.println(pacienteDao.findByNombre("Pepito").toString());
+
 	}
 
 }

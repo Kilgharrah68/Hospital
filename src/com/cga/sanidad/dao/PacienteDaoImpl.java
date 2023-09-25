@@ -74,6 +74,6 @@ public class PacienteDaoImpl implements PacienteDao {
 
 	@Override
 	public Paciente findById(int id) {
-		return jdbcTemplate.queryForObject("select * from pacientes where idPaciente = :IdPaciente", new MapSqlParameterSource("idPaciente", id ) , new PacienteRowMapper());
+		return jdbcTemplate.queryForObject("select * from pacientes where idPaciente = :idPaciente", new MapSqlParameterSource("idPaciente", id ) , new PacienteRowMapper());
 	}
 }
