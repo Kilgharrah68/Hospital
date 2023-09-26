@@ -14,4 +14,8 @@ public interface PacienteDao {
 	
 	public List<Paciente> findByNombre(String nombre);
 	
+	public boolean update(Paciente paciente);
+	
+	public boolean delete(int idPaciente);
+	
 }

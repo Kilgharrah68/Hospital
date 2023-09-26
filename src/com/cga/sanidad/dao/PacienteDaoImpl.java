@@ -8,6 +8,7 @@ import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -47,7 +48,7 @@ public class PacienteDaoImpl implements PacienteDao {
 	public List<Paciente> findAll() {
 
 		return jdbcTemplate.query("select * from pacientes", new PacienteRowMapper());
-				
+
 //				RowMapper<Paciente>() {
 //
 //			@Override
@@ -62,18 +63,34 @@ public class PacienteDaoImpl implements PacienteDao {
 //
 //				return pac;
 //			}
-		}
-
-
+	}
 
 	@Override
 	public List<Paciente> findByNombre(String nombre) {
-		return jdbcTemplate.query("select * from pacientes where nombre like :nombre", new MapSqlParameterSource("nombre", "%" + nombre + "%") , new PacienteRowMapper());
-		
+		return jdbcTemplate.query("select * from pacientes where nombre like :nombre",
+				new MapSqlParameterSource("nombre", "%" + nombre + "%"), new PacienteRowMapper());
+
 	}
 
 	@Override
 	public Paciente findById(int id) {
-		return jdbcTemplate.queryForObject("select * from pacientes where idPaciente = :idPaciente", new MapSqlParameterSource("idPaciente", id ) , new PacienteRowMapper());
+
+		return jdbcTemplate.queryForObject("select * from pacientes where idPaciente = :idPaciente",
+				new MapSqlParameterSource("idPaciente", id), new PacienteRowMapper());
+	}
+
+	@Override
+	public boolean update(Paciente paciente) {
+
+		return jdbcTemplate.update(
+				"update Pacientes set nombre=:nombre, apellidos=:apellidos, edad=:edad, telefono=:telefono, historial=:historial where idPaciente=:idPaciente",
+				new BeanPropertySqlParameterSource(paciente)) == 1;
+	}
+
+	@Override
+	public boolean delete(int idPaciente) {
+
+		return jdbcTemplate.update("delete from Pacientes where idPaciente=:idPaciente",
+				new MapSqlParameterSource("idPaciente", idPaciente)) == 1;
 	}
 }
