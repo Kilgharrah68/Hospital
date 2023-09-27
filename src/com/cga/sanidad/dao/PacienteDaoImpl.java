@@ -23,6 +23,8 @@ public class PacienteDaoImpl implements PacienteDao {
 	private NamedParameterJdbcTemplate jdbcTemplate;
 
 	// Hace referncia el fichero config.xml, dataSource
+	
+	
 	@Autowired
 	private void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
