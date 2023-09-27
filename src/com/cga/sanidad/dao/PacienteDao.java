@@ -18,4 +18,6 @@ public interface PacienteDao {
 	
 	public boolean delete(int idPaciente);
 	
+	public int[] saveAll(List<Paciente> pacientes);
+	
 }

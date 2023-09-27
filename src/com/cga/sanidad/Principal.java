@@ -1,5 +1,6 @@
 package com.cga.sanidad;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JOptionPane;
@@ -31,9 +32,9 @@ public class Principal {
 
 				int opc = Integer.parseInt(JOptionPane.showInputDialog(
 						"0 Listar todos los pacientes\n" + "1 Listar por Nombre\n" + "2 Mostrar Paciente\n"
-								+ "3 Añadir\n" + "4 Modificar\n" + "5 Eliminar\n" + "6 Salir: \n\n"));
+								+ "3 Añadir\n" + "4 Modificar\n" + "5 Eliminar\n" + "6 Carga Masiva \n" + "7 Salir \n\n"));
 				switch (opc) {
-				case 6:
+				case 7:
 					salir = true;
 					break;
 				case 0: // Listar todos los pacientes
@@ -42,6 +43,24 @@ public class Principal {
 					for (Paciente pacienteL : pacientes) {
 						System.out.println("Mostrar: " + pacienteL);
 					}
+					break;
+				case 6: // Listar todos los pacientes
+					List<Paciente> pacientesB = new ArrayList<Paciente>();
+					
+					int tamB = Integer.parseInt(JOptionPane.showInputDialog("Tamaño del Lote: "));
+					
+					for (int i=1;i<tamB;i++) {
+//						int numP = (int) Math.round(Math.random() * 10);
+						int numP = (int) Math.round(Math.random() * 1100 + 1100);
+						try {
+							Paciente pacP = pacienteDao.findById(numP);
+						} catch (EmptyResultDataAccessException e) {
+							pacientesB.add(new Paciente(numP,"Batch "+numP,"Last Name "+numP,numP/10-30,922555000+numP,null, "Hist "+numP));
+						}
+					}
+					
+					pacienteDao.saveAll(pacientesB);
+
 					break;
 				case 1: // Listar por Nombre
 					List<Paciente> pacientesN = pacienteDao
