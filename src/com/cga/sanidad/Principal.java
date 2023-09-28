@@ -50,7 +50,7 @@ public class Principal {
 				case 6: // Añadir un lote de pacientes aleatorios
 					List<Paciente> pacientesB = new ArrayList<Paciente>();
 					
-					int tamB = Integer.parseInt(JOptionPane.showInputDialog("Tamaño del Lote: "));
+					int tamB = Integer.parseInt(JOptionPane.showInputDialog("Tama�o del Lote: "));
 					
 					for (int i=1;i<tamB;i++) {
 //						int numP = (int) Math.round(Math.random() * 10);
