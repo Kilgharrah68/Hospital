@@ -25,9 +25,7 @@ public class PacienteDaoImpl implements PacienteDao {
 	// Plantilla para evitar inteccion de sql
 	private NamedParameterJdbcTemplate jdbcTemplate;
 
-	// Hace referncia el fichero config.xml, dataSource
-	
-	
+	// Inyección de dependencia del DataSource
 	@Autowired
 	private void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
@@ -51,30 +49,13 @@ public class PacienteDaoImpl implements PacienteDao {
 
 	@Override
 	public List<Paciente> findAll() {
-
 		return jdbcTemplate.query("select * from pacientes", new PacienteRowMapper());
-
-//				RowMapper<Paciente>() {
-//
-//			@Override
-//			public Paciente mapRow(ResultSet rs, int rowNum) throws SQLException {
-//				Paciente pac = new Paciente();
-//				pac.setIdPaciente(rs.getInt("IdPaciente"));
-//				pac.setNombre(rs.getString("nombre"));
-//				pac.setApellidos(rs.getString("apellidos"));
-//				pac.setEdad(rs.getInt("edad"));
-//				pac.setTelefono(rs.getInt("telefono"));
-//				pac.setHistorial(rs.getString("historial"));
-//
-//				return pac;
-//			}
 	}
 
 	@Override
 	public List<Paciente> findByNombre(String nombre) {
 		return jdbcTemplate.query("select * from pacientes where nombre like :nombre",
 				new MapSqlParameterSource("nombre", "%" + nombre + "%"), new PacienteRowMapper());
-
 	}
 
 	@Override
