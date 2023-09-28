@@ -19,7 +19,7 @@ public class Paciente {
 	public Paciente() {
 	}
 	
-	//Constructor con par�metros
+	//Constructor con parámetros
 	public Paciente(int idPaciente, String nombre, String apellidos, int edad, int telefono, Direccion direccion,
 			String historial) {
 		this.idPaciente = idPaciente;
@@ -34,7 +34,8 @@ public class Paciente {
 	public void setIdPaciente(int idPaciente) {
 		this.idPaciente = idPaciente;
 	}
-
+	
+	// Setters para los atributos	
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
@@ -50,26 +51,31 @@ public class Paciente {
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
-
+	
+	// Setter para direccion con anotación @Autowired
 	@Autowired
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
 	}
-
+	
+	// Setter para historial
 	public void setHistorial(String historial) {
 		this.historial = historial;
 	}
-
+	
+	// Método toString para representación en cadena del objeto
 	@Override
 	public String toString() {
 		return "Paciente [idPaciente=" + idPaciente + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad="
 				+ edad + ", telefono=" + telefono + ", direccion=" + direccion + ", historial=" + historial + "]";
 	}
 	
+	// Método para imprimir historial
 	public void imprimirHistorial () {
 	System.out.println("Paciente con Historial");
 }
-
+	
+	// Getters para acceder a los atributos
 	public int getIdPaciente() {
 		return idPaciente;
 	}
