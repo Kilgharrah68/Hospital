@@ -27,6 +27,7 @@
 	</build>
 
 	<dependencies>
+		<!-- Dependencias de Spring Framework -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
@@ -74,12 +75,15 @@
 			<version>4.0.5.RELEASE</version>
 		</dependency>
 
+		<!-- Dependencia de Commons DBCP (Database Connection Pooling) -->
 		<!-- https://mvnrepository.com/artifact/commons-dbcp/commons-dbcp -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
 			<version>1.4</version>
 		</dependency>
+
+		<!-- Dependencia de MySQL Connector -->
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>

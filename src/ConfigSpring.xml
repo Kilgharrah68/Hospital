@@ -6,7 +6,9 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
-<bean id="pac" class="com.cga.sanidad.pojo.Paciente">
+		
+	<!-- Definición de un bean llamado 'pac' de la clase 'com.cga.sanidad.pojo.Paciente' -->
+		<bean id="pac" class="com.cga.sanidad.pojo.Paciente">
 		<property name="idPaciente" value="1005"></property>
 		<property name="nombre" value="Pepito"></property>
 		<property name="apellidos" value="Pepito"></property>
@@ -20,12 +22,13 @@
 		<property name="cp" value="38300"></property> <constructor-arg name="calle" 
 		value="San Antonio"></constructor-arg> <constructor-arg name="numero" value="2"></constructor-arg> 
 		<constructor-arg name="cp" value="38001"></constructor-arg> </bean> -->
-
+	
+	<!-- Configuración de escaneo de componentes en el paquete 'com.cga.sanidad' -->
 	<context:component-scan
 		base-package="com.cga.sanidad"></context:component-scan>
-
-	<bean id="dataSource"
 	
+	<!-- Configuración del origen de datos (dataSource) -->
+	<bean id="dataSource"
 		class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver"></property>
@@ -35,10 +38,11 @@
 		<property name="username" value="root"></property>
 		<property name="password" value="Douglas-4321"></property>
 	</bean>
-
+	<!-- Configuración del administrador de transacciones -->
 	<bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 	<property name="dataSource" ref="dataSource"></property>
 	</bean>
+<!-- Habilitar el manejo de transacciones mediante anotaciones -->
 <tx:annotation-driven />
 </beans>

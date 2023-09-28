@@ -17,11 +17,14 @@ import com.cga.sanidad.pojo.Paciente;
 public class Principal {
 
 	public static void main(String[] args) {
-
+		
+		// Crear y configurar el contexto de Spring
 		ApplicationContext apc = new ClassPathXmlApplicationContext("ConfigSpring.xml");
-
+		
+		// Obtener el bean del PacienteDao
 		PacienteDao pacienteDao = (PacienteDao) apc.getBean("PacienteDao");
-
+		
+		// Cerrar el contexto de Spring
 		((ClassPathXmlApplicationContext) apc).close();
 
 		try {
@@ -32,7 +35,7 @@ public class Principal {
 
 				int opc = Integer.parseInt(JOptionPane.showInputDialog(
 						"0 Listar todos los pacientes\n" + "1 Listar por Nombre\n" + "2 Mostrar Paciente\n"
-								+ "3 A�adir\n" + "4 Modificar\n" + "5 Eliminar\n" + "6 Carga Masiva \n" + "7 Salir \n\n"));
+								+ "3 Añadir\n" + "4 Modificar\n" + "5 Eliminar\n" + "6 Carga Masiva \n" + "7 Salir \n\n"));
 				switch (opc) {
 				case 7:
 					salir = true;
@@ -44,10 +47,10 @@ public class Principal {
 						System.out.println("Mostrar: " + pacienteL);
 					}
 					break;
-				case 6: // Listar todos los pacientes
+				case 6: // Añadir un lote de pacientes aleatorios
 					List<Paciente> pacientesB = new ArrayList<Paciente>();
 					
-					int tamB = Integer.parseInt(JOptionPane.showInputDialog("Tama�o del Lote: "));
+					int tamB = Integer.parseInt(JOptionPane.showInputDialog("Tamaño del Lote: "));
 					
 					for (int i=1;i<tamB;i++) {
 //						int numP = (int) Math.round(Math.random() * 10);
@@ -77,7 +80,7 @@ public class Principal {
 
 					break;
 
-				case 3: // A�adir Paciente
+				case 3: // Añadir Paciente
 
 					Paciente pacN = new Paciente();
 
@@ -89,14 +92,14 @@ public class Principal {
 					pacN.setHistorial(JOptionPane.showInputDialog("Historial: "));
 
 					if (pacienteDao.save(pacN)) {
-						System.out.println("Pacinete A�adido " + pacN);
+						System.out.println("Pacinete Añadido " + pacN);
 					} else {
-						System.out.println("Error al a�adir el paciente!!!");
+						System.out.println("Error al añadir el paciente!!!");
 					}
 
 					break;
 
-				case 4: // Modificar Paciente
+				case 4: // Modificar Paciente por Id
 					try {
 						Paciente pacM = pacienteDao.findById(
 								Integer.parseInt(JOptionPane.showInputDialog("Id de paciente a modificar: ")));
@@ -124,7 +127,7 @@ public class Principal {
 					}
 					break;
 
-				case 5: // Eliminar
+				case 5: // Eliminar Paciente por Id
 					int idPac = Integer.parseInt(JOptionPane.showInputDialog("Id Paciente a Eliminar: "));
 					try {
 						Paciente pacD = pacienteDao.findById(idPac);
