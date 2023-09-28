@@ -7,6 +7,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 //import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -26,8 +27,7 @@ public class PacienteDaoImpl implements PacienteDao {
 	private NamedParameterJdbcTemplate jdbcTemplate;
 
 	// Hace referncia el fichero config.xml, dataSource
-	
-	
+
 	@Autowired
 	private void setDataSource(DataSource dataSource) {
 		this.jdbcTemplate = new NamedParameterJdbcTemplate(dataSource);
@@ -98,13 +98,21 @@ public class PacienteDaoImpl implements PacienteDao {
 		return jdbcTemplate.update("delete from Pacientes where idPaciente=:idPaciente",
 				new MapSqlParameterSource("idPaciente", idPaciente)) == 1;
 	}
-	@Transactional 
-	
+
+	@Transactional
+
 	@Override
 	public int[] saveAll(List<Paciente> pacientes) {
-		SqlParameterSource[] batchArgs = 
-				SqlParameterSourceUtils.createBatch(pacientes.toArray());
-		
-		return jdbcTemplate.batchUpdate("insert into Pacientes VALUES (:idPaciente,:nombre,:apellidos,:edad,:telefono,null,:historial)", batchArgs);
+		try {
+			SqlParameterSource[] batchArgs = SqlParameterSourceUtils.createBatch(pacientes.toArray());
+
+			return jdbcTemplate.batchUpdate(
+					"insert into Pacientes VALUES (:idPaciente,:nombre,:apellidos,:edad,:telefono,null,:historial)",
+					batchArgs);
+
+		} catch (Exception e) {
+			System.out.println("Error @Transactional");
+			return null;
+		}
 	}
 }

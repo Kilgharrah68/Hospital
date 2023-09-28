@@ -52,11 +52,11 @@ public class Principal {
 					for (int i=1;i<tamB;i++) {
 //						int numP = (int) Math.round(Math.random() * 10);
 						int numP = (int) Math.round(Math.random() * 1100 + 1100);
-						try {
-							Paciente pacP = pacienteDao.findById(numP);
-						} catch (EmptyResultDataAccessException e) {
+//						try {
+//							Paciente pacP = pacienteDao.findById(numP);
+//						} catch (EmptyResultDataAccessException e) {
 							pacientesB.add(new Paciente(numP,"Batch "+numP,"Last Name "+numP,numP/10-30,922555000+numP,null, "Hist "+numP));
-						}
+//						}
 					}
 					
 					pacienteDao.saveAll(pacientesB);
