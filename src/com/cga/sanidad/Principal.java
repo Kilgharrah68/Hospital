@@ -23,8 +23,6 @@ public class Principal {
 		
 		// Obtener el bean del PacienteDao
 		PacienteDao pacienteDao = (PacienteDao) apc.getBean("PacienteDao");
-		
-		// Cerrar el contexto de Spring
 		 
 		try {
 
@@ -156,7 +154,9 @@ public class Principal {
 		} catch (NumberFormatException e) {
 
 		}
-
+		
+		// Cerrar el contexto de Spring
+		((ClassPathXmlApplicationContext) apc).close();
 	}
 
 }
