@@ -25,8 +25,7 @@ public class Principal {
 		PacienteDao pacienteDao = (PacienteDao) apc.getBean("PacienteDao");
 		
 		// Cerrar el contexto de Spring
-		((ClassPathXmlApplicationContext) apc).close();
-
+		 
 		try {
 
 			boolean salir = false;
@@ -35,7 +34,7 @@ public class Principal {
 
 				int opc = Integer.parseInt(JOptionPane.showInputDialog(
 						"0 Listar todos los pacientes\n" + "1 Listar por Nombre\n" + "2 Mostrar Paciente\n"
-								+ "3 AÃ±adir\n" + "4 Modificar\n" + "5 Eliminar\n" + "6 Carga Masiva \n" + "7 Salir \n\n"));
+								+ "3 Añadir\n" + "4 Modificar\n" + "5 Eliminar\n" + "6 Carga Masiva \n" + "7 Salir \n\n"));
 				switch (opc) {
 				case 7:
 					salir = true;
@@ -80,7 +79,7 @@ public class Principal {
 
 					break;
 
-				case 3: // AÃ±adir Paciente
+				case 3: // Añadir Paciente
 
 					Paciente pacN = new Paciente();
 

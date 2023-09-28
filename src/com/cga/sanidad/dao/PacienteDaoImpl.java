@@ -87,8 +87,7 @@ public class PacienteDaoImpl implements PacienteDao {
 	
 	@Override
 	public int[] saveAll(List<Paciente> pacientes) {
-		SqlParameterSource[] batchArgs = 
-				SqlParameterSourceUtils.createBatch(pacientes.toArray());
+		SqlParameterSource[] batchArgs = SqlParameterSourceUtils.createBatch(pacientes.toArray());
 		
 		return jdbcTemplate.batchUpdate("insert into Pacientes VALUES (:idPaciente,:nombre,:apellidos,:edad,:telefono,null,:historial)", batchArgs);
 	}

@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 		
-	<!-- Definición de un bean llamado 'pac' de la clase 'com.cga.sanidad.pojo.Paciente' -->
+	<!-- Definición de un bean llamado 'pac' de la clase 'com.cga.sanidad.pojo.Paciente' 
 		<bean id="pac" class="com.cga.sanidad.pojo.Paciente">
 		<property name="idPaciente" value="1005"></property>
 		<property name="nombre" value="Pepito"></property>
@@ -15,7 +15,7 @@
 		<property name="edad" value="22"></property>
 		<property name="telefono" value="555555"></property>
 		<property name="historial" value="historial"></property>
-	</bean>
+	</bean>-->
 
 	<!-- <bean id="dir" class="com.cga.sanidad.Direccion"> <property name="calle" 
 		value="San Antonio"></property> <property name="numero" value="2"></property> 

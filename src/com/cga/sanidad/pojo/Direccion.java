@@ -38,7 +38,4 @@ public class Direccion {
 		return "Direccion [calle=" + calle + ", numero=" + numero + ", cp=" + cp + "]";
 	}
 	
-	
-	
-	
 }

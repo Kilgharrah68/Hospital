@@ -19,7 +19,7 @@ public class Paciente {
 	public Paciente() {
 	}
 	
-	//Constructor con par√°metros
+	//Constructor con par·metros
 	public Paciente(int idPaciente, String nombre, String apellidos, int edad, int telefono, Direccion direccion,
 			String historial) {
 		this.idPaciente = idPaciente;
@@ -52,7 +52,7 @@ public class Paciente {
 		this.telefono = telefono;
 	}
 	
-	// Setter para direccion con anotaci√≥n @Autowired
+	// Setter para direccion con anotaciÛn @Autowired
 	@Autowired
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
@@ -63,14 +63,14 @@ public class Paciente {
 		this.historial = historial;
 	}
 	
-	// M√©todo toString para representaci√≥n en cadena del objeto
+	// M√©todo toString para representaciÛn en cadena del objeto
 	@Override
 	public String toString() {
 		return "Paciente [idPaciente=" + idPaciente + ", nombre=" + nombre + ", apellidos=" + apellidos + ", edad="
 				+ edad + ", telefono=" + telefono + ", direccion=" + direccion + ", historial=" + historial + "]";
 	}
 	
-	// M√©todo para imprimir historial
+	// MÈtodo para imprimir historial
 	public void imprimirHistorial () {
 	System.out.println("Paciente con Historial");
 }

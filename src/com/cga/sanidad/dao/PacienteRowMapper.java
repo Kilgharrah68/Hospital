@@ -9,7 +9,7 @@ import com.cga.sanidad.pojo.Paciente;
 
 public class PacienteRowMapper implements RowMapper<Paciente> {
 
-	// MÃ©todo de mapeo que convierte una fila de la base de datos en un objeto Paciente
+	// Método de mapeo que convierte una fila de la base de datos en un objeto Paciente
 	public Paciente mapRow(ResultSet rs, int rowNum) throws SQLException {
 		
 		// Crear una nueva instancia de Paciente
